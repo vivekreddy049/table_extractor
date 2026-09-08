@@ -160,3 +160,39 @@ def test_excel_and_database_output_is_byte_deterministic(ruled_pdf, cfg, tmp_pat
         finally:
             con.close()
     assert rows[0] == rows[1]
+
+
+def test_two_cli_runs_produce_byte_identical_output(ruled_pdf, tmp_path):
+    """The brief's check is a two-run byte diff of the OUTPUT DIRECTORY.
+
+    The existing determinism test hands the persistence layer a fixed stamp, so
+    it proves the writers are reproducible but says nothing about who supplies
+    the timestamp. The CLI took it from the wall clock, and a full `zextract
+    run` therefore differed between two runs on `extraction.db` alone -- every
+    extracted value, and even the content-derived run_id and doc_id, matched.
+
+    That is the whole failure the brief calls an automatic disqualifier, so it
+    is tested where a reviewer would meet it: through the command line, over
+    the entire output tree.
+    """
+    from zextract.cli import main
+
+    digests = []
+    for run in ("a", "b"):
+        out = tmp_path / run
+        rc = main(["run", "--input", str(ruled_pdf), "--out", str(out), "--offline"])
+        assert rc == 0, f"run {run} exited {rc}"
+        digests.append(
+            {
+                p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                for p in sorted(out.rglob("*"))
+                if p.is_file()
+            }
+        )
+
+    assert digests[0] == digests[1], (
+        "two runs differ: "
+        + ", ".join(
+            k for k in digests[0] if digests[0].get(k) != digests[1].get(k)
+        )
+    )

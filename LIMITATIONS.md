@@ -375,6 +375,26 @@ a non-English document gets no `total` rows at all. It degrades to structure
 only -- sections and data still nest correctly, and cross-footing simply never
 fires, which is the right failure for a table whose totals we cannot identify.
 
+**A borderless table under its own introducing sentence was invisible.** The
+worst class of failure this pipeline can have -- a table that is never detected
+reports nothing at all -- and it was general, not particular. Apple's debt
+maturity schedule begins 8pt below "The future principal payments ... are as
+follows (in millions):", inside the gap threshold and with no rule between
+them, so the schedule joined the paragraph's block, partitioned as one column
+of prose, and never became a candidate.
+
+A block now also splits where a PARAGRAPH line is followed by a line carrying
+column structure. Two narrowings were needed and both came from tests failing,
+which is the argument for keeping the regression suite pinned to real pages:
+
+* Splitting on any change of structure shredded tables, because a section
+  heading ("Net sales:") holds no gutter either. Restricted to the prose ->
+  table direction, plus a width test: prose reaches 0.68 of the text width
+  where those headings reach 0.06-0.13.
+* That still split the exhibit index, because a wrapped description is wide and
+  gutter-free too. It is separated by anchor: a paragraph starts at the left
+  margin, a wrapped cell starts at its column, 70pt in.
+
 ## 6. Generalisation: what is defended, and what is not
 
 The held-out set is different documents, and the realistic failure mode is a
