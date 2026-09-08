@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zextract"
+version = "0.1.0"
+description = "Deterministic table and context extraction from large, messy PDFs"
+requires-python = ">=3.10"
+dependencies = [
+    "pymupdf>=1.24",
+    "numpy>=1.24",
+    "pillow>=10.0",
+    "openpyxl>=3.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+zextract = ["calib/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

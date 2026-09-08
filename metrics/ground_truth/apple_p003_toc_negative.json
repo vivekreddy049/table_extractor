@@ -1,0 +1,19 @@
+{
+  "label_id": "apple_p003_toc_negative",
+  "document": "Apple Form 10-K.pdf",
+  "page_no": 3,
+  "is_table": false,
+  "expected_rejection_codes": [
+    "TRAP_TOC"
+  ],
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "A table of contents. Geometrically it is a beautifully regular two-column",
+    "table with perfectly right-aligned integers -- it scores HIGHER on any",
+    "'tableness' measure than most real tables in this document, which is why",
+    "no score threshold can separate it and a named rule is required.",
+    "The pipeline must emit NO accepted table on this page. Emitting one is a",
+    "false positive; rejecting with a reason code is the correct outcome."
+  ],
+  "author": "self"
+}

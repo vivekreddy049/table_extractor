@@ -1,0 +1,233 @@
+{
+  "label_id": "mrpl_p004_rating_history",
+  "document": "Shell MRPL Aviation Fuels and Services Limited.pdf",
+  "page_no": 4,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "The hardest structure in the corpus: a three-level spanning header",
+    "over Date/Rating pairs, with almost every body cell wrapped across",
+    "three or four physical lines. Spans are recorded here; the",
+    "extractor does not yet emit row_span/col_span (S4.3 unbuilt).",
+    "This table ends on page 4. The annexure on page 5 is a different",
+    "table (no continuation marker, different columns) and must not be",
+    "stitched to this one.",
+    "The label reads 'Fund based/Non-fund based - Others'. The page wraps that cell across four lines and hyphenates it as 'Non-' + 'fund', so the raw token join is 'Non- fund'. The label records the SEMANTIC cell; rejoining a word hyphenated at a line break is S5 text hygiene and is not built. This is a known extractor gap, not a fabricated label."
+  ],
+  "header_row_count": 3,
+  "stitch": {
+    "is_continuation": false,
+    "not_same_table_as": "mrpl_p005_annexure"
+  },
+  "spans": [
+    {
+      "row": 0,
+      "col": 0,
+      "row_span": 3,
+      "col_span": 1,
+      "text": "Instrument"
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "row_span": 3,
+      "col_span": 1,
+      "text": "Type"
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "row_span": 1,
+      "col_span": 3,
+      "text": "Current rating (FY2026)"
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "row_span": 1,
+      "col_span": 6,
+      "text": "Chronology of rating history for the past 3 years"
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "row_span": 1,
+      "col_span": 3,
+      "text": "FY2026"
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "row_span": 1,
+      "col_span": 2,
+      "text": "FY2025"
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "row_span": 1,
+      "col_span": 2,
+      "text": "FY2024"
+    },
+    {
+      "row": 1,
+      "col": 9,
+      "row_span": 1,
+      "col_span": 2,
+      "text": "FY2023"
+    }
+  ],
+  "header_paths": [
+    [
+      "Instrument"
+    ],
+    [
+      "Type"
+    ],
+    [
+      "Current rating (FY2026)",
+      "FY2026",
+      "Amount rated (Rs. crore)"
+    ],
+    [
+      "Current rating (FY2026)",
+      "FY2026",
+      "Date"
+    ],
+    [
+      "Current rating (FY2026)",
+      "FY2026",
+      "Rating"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2025",
+      "Date"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2025",
+      "Rating"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2024",
+      "Date"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2024",
+      "Rating"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2023",
+      "Date"
+    ],
+    [
+      "Chronology of rating history for the past 3 years",
+      "FY2023",
+      "Rating"
+    ]
+  ],
+  "context": {
+    "title": "Rating history for past three years",
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": "Rs. crore"
+  },
+  "grid": [
+    [
+      "Instrument",
+      "Type",
+      "Current rating (FY2026)",
+      "",
+      "",
+      "Chronology of rating history for the past 3 years",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "FY2026",
+      "",
+      "",
+      "FY2025",
+      "",
+      "FY2024",
+      "",
+      "FY2023",
+      ""
+    ],
+    [
+      "",
+      "",
+      "Amount rated (Rs. crore)",
+      "Date",
+      "Rating",
+      "Date",
+      "Rating",
+      "Date",
+      "Rating",
+      "Date",
+      "Rating"
+    ],
+    [
+      "Fund based/Non-fund based - Others",
+      "Long term/Short term",
+      "143.00",
+      "Aug 29, 2025",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+",
+      "Jun 28, 2024",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+",
+      "-",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "Unallocated limits",
+      "Long term/Short term",
+      "22.00",
+      "Aug 29, 2025",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+",
+      "Jun 28, 2024",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+",
+      "-",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "Fund based - Cash credit",
+      "Long term",
+      "-",
+      "-",
+      "-",
+      "Jun 28, 2024",
+      "[ICRA]AA- (Stable)",
+      "-",
+      "-",
+      "Mar 17, 2023",
+      "[ICRA]AA- (Stable)"
+    ],
+    [
+      "Non-fund based - Others",
+      "Short term",
+      "-",
+      "-",
+      "-",
+      "Jun 28, 2024",
+      "[ICRA]A1+",
+      "-",
+      "-",
+      "Mar 17, 2023",
+      "[ICRA]A1+"
+    ]
+  ],
+  "author": "self"
+}

@@ -1,0 +1,48 @@
+{
+  "label_id": "apple_p030_interest_rate",
+  "document": "Apple Form 10-K.pdf",
+  "page_no": 30,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "A 5-column table embedded in Item 7A prose. The header wraps:",
+    "'Interest Rate Sensitive Instrument' / 'Hypothetical Interest Rate",
+    "Increase' over two physical lines, and 'Potential Impact' sits above",
+    "the two year columns in the visual layout but is itself a data",
+    "column (Decline in fair value / Increase in annual interest expense).",
+    "ARCHITECTURE.md §7 called this 4-col; the document is 5.",
+    "Dollar signs print in their own band and are absorbed into the year",
+    "cells, same rule as the income statement."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": null,
+    "caption": null,
+    "section_path": "Item 7A. Quantitative and Qualitative Disclosures About Market Risk / Interest Rate Risk",
+    "unit_scale_note": "dollars in millions"
+  },
+  "grid": [
+    [
+      "Interest Rate Sensitive Instrument",
+      "Hypothetical Interest Rate Increase",
+      "Potential Impact",
+      "2024",
+      "2023"
+    ],
+    [
+      "Investment portfolio",
+      "100 basis points, all tenors",
+      "Decline in fair value",
+      "$ 2,755",
+      "$ 3,089"
+    ],
+    [
+      "Term debt",
+      "100 basis points, all tenors",
+      "Increase in annual interest expense",
+      "$ 139",
+      "$ 194"
+    ]
+  ],
+  "author": "self"
+}

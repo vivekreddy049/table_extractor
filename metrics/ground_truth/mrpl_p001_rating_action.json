@@ -1,0 +1,48 @@
+{
+  "label_id": "mrpl_p001_rating_action",
+  "document": "Shell MRPL Aviation Fuels and Services Limited.pdf",
+  "page_no": 1,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "header_row_count": 1,
+  "context": {
+    "title": "Summary of rating action",
+    "caption": "*Instrument details are provided in Annexure-I",
+    "section_path": null,
+    "unit_scale_note": "Rs. crore"
+  },
+  "notes": [
+    "A fully ruled four-column table with wrapped header cells and a wrapped",
+    "final column. The header labels wrap over two or three physical lines;",
+    "the correct logical table has ONE header row.",
+    "The trailing '*' on 'Instrument*' is part of the cell, not a footnote",
+    "marker we strip -- footnote binding is S8 and is not built."
+  ],
+  "grid": [
+    [
+      "Instrument*",
+      "Previous rated amount (Rs. crore)",
+      "Current rated amount (Rs. crore)",
+      "Rating action"
+    ],
+    [
+      "Long term/Short term fund based/non-fund based",
+      "143.00",
+      "143.00",
+      "[ICRA]AA-(Stable)/[ICRA]A1+; reaffirmed"
+    ],
+    [
+      "Long term/Short term unallocated",
+      "22.00",
+      "22.00",
+      "[ICRA]AA-(Stable)/[ICRA]A1+; reaffirmed"
+    ],
+    [
+      "Total",
+      "165.0",
+      "165.0",
+      ""
+    ]
+  ],
+  "author": "self"
+}

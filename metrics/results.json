@@ -1,0 +1,460 @@
+{
+  "caveats": [
+    "17 labelled tables. Too few to generalise from.",
+    "Detection matched by cell-content overlap, not IoU>=0.7: no ground-truth bounding boxes were hand-drawn, and deriving them from the extractor's own output would be circular.",
+    "structure_similarity is TEDS-Struct-like, not TEDS: spans are ignored because the extractor does not produce spans.",
+    "Confidence is uncalibrated; the reliability bins below show what it is currently worth, which is the point of measuring it.",
+    "Labels are authored by the same party as the extractor unless marked otherwise; see label_authors and cells_by_author.",
+    "label_type 'semantic' labels are scored on normalized_value with rows matched on the joined row_label_path; 'raw_text' labels are scored on the literal cell string. The brief asks for both."
+  ],
+  "cells": {
+    "exact_match": 0.8093,
+    "flag_precision": 0.16,
+    "flag_recall": 0.0833,
+    "flagged": 75,
+    "flagged_share": 0.0993,
+    "n": 755,
+    "reliability_bins": [
+      {
+        "confidence_range": [
+          0.0,
+          0.2
+        ],
+        "mean_confidence": 0.1067,
+        "n": 6,
+        "observed_accuracy": 0.1667
+      },
+      {
+        "confidence_range": [
+          0.4,
+          0.6
+        ],
+        "mean_confidence": 0.5101,
+        "n": 9,
+        "observed_accuracy": 0.6667
+      },
+      {
+        "confidence_range": [
+          0.6,
+          0.8
+        ],
+        "mean_confidence": 0.613,
+        "n": 36,
+        "observed_accuracy": 1.0
+      },
+      {
+        "confidence_range": [
+          0.9,
+          1.01
+        ],
+        "mean_confidence": 0.9518,
+        "n": 704,
+        "observed_accuracy": 0.8068
+      }
+    ],
+    "silent_error_rate": 0.1748,
+    "silent_errors": 132,
+    "wrong": 144
+  },
+  "cells_by_author": {
+    "llm-assisted": {
+      "exact_match": 0.6094,
+      "flag_precision": 0.4,
+      "flag_recall": 0.0345,
+      "flagged": 10,
+      "flagged_share": 0.0337,
+      "n": 297,
+      "reliability_bins": [
+        {
+          "confidence_range": [
+            0.4,
+            0.6
+          ],
+          "mean_confidence": 0.5,
+          "n": 4,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": [
+            0.9,
+            1.01
+          ],
+          "mean_confidence": 0.9525,
+          "n": 293,
+          "observed_accuracy": 0.6041
+        }
+      ],
+      "silent_error_rate": 0.3771,
+      "silent_errors": 112,
+      "wrong": 116
+    },
+    "self": {
+      "exact_match": 0.9312,
+      "flag_precision": 0.1702,
+      "flag_recall": 0.2857,
+      "flagged": 47,
+      "flagged_share": 0.1155,
+      "n": 407,
+      "reliability_bins": [
+        {
+          "confidence_range": [
+            0.0,
+            0.2
+          ],
+          "mean_confidence": 0.1067,
+          "n": 6,
+          "observed_accuracy": 0.1667
+        },
+        {
+          "confidence_range": [
+            0.4,
+            0.6
+          ],
+          "mean_confidence": 0.5182,
+          "n": 5,
+          "observed_accuracy": 0.4
+        },
+        {
+          "confidence_range": [
+            0.6,
+            0.8
+          ],
+          "mean_confidence": 0.613,
+          "n": 18,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": [
+            0.9,
+            1.01
+          ],
+          "mean_confidence": 0.9511,
+          "n": 378,
+          "observed_accuracy": 0.9471
+        }
+      ],
+      "silent_error_rate": 0.0491,
+      "silent_errors": 20,
+      "wrong": 28
+    },
+    "user": {
+      "exact_match": 1.0,
+      "flag_precision": 0.0,
+      "flag_recall": null,
+      "flagged": 18,
+      "flagged_share": 0.3529,
+      "n": 51,
+      "reliability_bins": [
+        {
+          "confidence_range": [
+            0.6,
+            0.8
+          ],
+          "mean_confidence": 0.613,
+          "n": 18,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": [
+            0.9,
+            1.01
+          ],
+          "mean_confidence": 0.9541,
+          "n": 33,
+          "observed_accuracy": 1.0
+        }
+      ],
+      "silent_error_rate": 0.0,
+      "silent_errors": 0,
+      "wrong": 0
+    }
+  },
+  "detection": {
+    "false_positives": 0,
+    "matched": 12,
+    "negatives": 2,
+    "positives": 15
+  },
+  "label_authors": {
+    "llm-assisted": 2,
+    "self": 14,
+    "user": 1
+  },
+  "labelled_tables": 17,
+  "per_table": [
+    {
+      "best_content_overlap": 0.4667,
+      "kind": "positive",
+      "label_id": "apple_p001_securities_registered",
+      "matched": false
+    },
+    {
+      "accepted_tables_on_page": 0,
+      "correct": true,
+      "kind": "negative",
+      "label_id": "apple_p003_toc_negative",
+      "rejection_codes": [
+        "TRAP_TOC"
+      ]
+    },
+    {
+      "best_content_overlap": 1.0,
+      "cell_exact_match": 1.0,
+      "cells_compared": 15,
+      "gt_shape": [
+        3,
+        5
+      ],
+      "kind": "positive",
+      "label_id": "apple_p030_interest_rate",
+      "matched": true,
+      "pred_shape": [
+        3,
+        5
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": true,
+      "structure_similarity": 1.0
+    },
+    {
+      "best_content_overlap": 1.0,
+      "cell_exact_match": 1.0,
+      "cells_compared": 100,
+      "gt_shape": [
+        25,
+        4
+      ],
+      "kind": "positive",
+      "label_id": "apple_p032_income_statement",
+      "matched": true,
+      "pred_shape": [
+        25,
+        4
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": true,
+      "structure_similarity": 1.0
+    },
+    {
+      "best_content_overlap": 0.9434,
+      "cell_exact_match": 1.0,
+      "cells_compared": 51,
+      "gt_shape": [
+        18,
+        4
+      ],
+      "kind": "positive",
+      "label_id": "apple_p032_income_statement_semantic",
+      "matched": true,
+      "pred_shape": [
+        25,
+        4
+      ],
+      "row_label_similarity": 0.802,
+      "scored_as": "normalized_value",
+      "shape_exact": false,
+      "structure_similarity": 0.5581
+    },
+    {
+      "best_content_overlap": 0.9072,
+      "cell_exact_match": 0.9352,
+      "cells_compared": 108,
+      "gt_shape": [
+        36,
+        3
+      ],
+      "kind": "positive",
+      "label_id": "apple_p034_balance_sheet",
+      "matched": true,
+      "pred_shape": [
+        37,
+        3
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.9315
+    },
+    {
+      "best_content_overlap": 0.9597,
+      "cell_exact_match": 0.9779,
+      "cells_compared": 136,
+      "gt_shape": [
+        17,
+        8
+      ],
+      "kind": "positive",
+      "label_id": "apple_p040_marketable_securities",
+      "matched": true,
+      "pred_shape": [
+        17,
+        8
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": true,
+      "structure_similarity": 0.9412
+    },
+    {
+      "best_content_overlap": 0.537,
+      "cell_exact_match": 0.43,
+      "cells_compared": 200,
+      "gt_shape": [
+        51,
+        5
+      ],
+      "kind": "positive",
+      "label_id": "apple_p057_exhibit_index",
+      "matched": true,
+      "pred_shape": [
+        50,
+        4
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.0
+    },
+    {
+      "best_content_overlap": 0.5625,
+      "cell_exact_match": 0.6667,
+      "cells_compared": 12,
+      "gt_shape": [
+        4,
+        4
+      ],
+      "kind": "positive",
+      "label_id": "mrpl_p001_rating_action",
+      "matched": true,
+      "pred_shape": [
+        3,
+        4
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.5714
+    },
+    {
+      "best_content_overlap": 1.0,
+      "cell_exact_match": 1.0,
+      "cells_compared": 6,
+      "gt_shape": [
+        3,
+        2
+      ],
+      "kind": "positive",
+      "label_id": "mrpl_p004_complexity",
+      "matched": true,
+      "pred_shape": [
+        3,
+        2
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": true,
+      "structure_similarity": 1.0
+    },
+    {
+      "best_content_overlap": 0.4308,
+      "kind": "positive",
+      "label_id": "mrpl_p004_rating_history",
+      "matched": false
+    },
+    {
+      "best_content_overlap": 1.0,
+      "cell_exact_match": 1.0,
+      "cells_compared": 21,
+      "gt_shape": [
+        3,
+        7
+      ],
+      "kind": "positive",
+      "label_id": "mrpl_p005_annexure",
+      "matched": true,
+      "pred_shape": [
+        3,
+        7
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": true,
+      "structure_similarity": 1.0
+    },
+    {
+      "accepted_tables_on_page": 0,
+      "correct": true,
+      "kind": "negative",
+      "label_id": "mrpl_p007_figure_page",
+      "rejection_codes": []
+    },
+    {
+      "best_content_overlap": 0.5594,
+      "cell_exact_match": 0.98,
+      "cells_compared": 100,
+      "gt_shape": [
+        47,
+        4
+      ],
+      "kind": "positive",
+      "label_id": "shell_p001_balance_sheet",
+      "matched": true,
+      "pred_shape": [
+        25,
+        4
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.6944
+    },
+    {
+      "best_content_overlap": 0.4118,
+      "kind": "positive",
+      "label_id": "shell_p002_pnl",
+      "matched": false
+    },
+    {
+      "best_content_overlap": 0.8947,
+      "cell_exact_match": 0.6053,
+      "cells_compared": 114,
+      "gt_shape": [
+        40,
+        3
+      ],
+      "kind": "positive",
+      "label_id": "shell_p003_cashflow",
+      "matched": true,
+      "pred_shape": [
+        39,
+        5
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.0
+    },
+    {
+      "best_content_overlap": 0.8929,
+      "cell_exact_match": 0.9,
+      "cells_compared": 30,
+      "gt_shape": [
+        10,
+        3
+      ],
+      "kind": "positive",
+      "label_id": "shell_p003_financing_liabilities",
+      "matched": true,
+      "pred_shape": [
+        12,
+        3
+      ],
+      "row_label_similarity": null,
+      "scored_as": "raw_text",
+      "shape_exact": false,
+      "structure_similarity": 0.8182
+    }
+  ]
+}

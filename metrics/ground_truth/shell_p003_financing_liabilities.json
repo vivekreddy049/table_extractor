@@ -1,0 +1,73 @@
+{
+  "label_id": "shell_p003_financing_liabilities",
+  "document": "Shell.pdf",
+  "page_no": 3,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "The second table on the cash-flow page. Labelled so a scorer that",
+    "treats unmatched accepted tables on a labelled page as false",
+    "positives is not punished for finding a table that is really there.",
+    "The extractor currently glues this onto the cash-flow grid."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": "Cash and non-cash changes in Liabilities arising from financing activities",
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": "₹ Million"
+  },
+  "grid": [
+    [
+      "Particulars",
+      "Borrowings",
+      "Lease Liabilities"
+    ],
+    [
+      "April 1, 2021",
+      "238.68",
+      "8.60"
+    ],
+    [
+      "Cash Flow",
+      "(238.68)",
+      "(3.14)"
+    ],
+    [
+      "Non Cash changes",
+      "",
+      ""
+    ],
+    [
+      "- Additions or (modifications) to lease liabilities",
+      "-",
+      "0.51"
+    ],
+    [
+      "March 31, 2022",
+      "-",
+      "5.97"
+    ],
+    [
+      "Cash Flow",
+      "-",
+      "(3.19)"
+    ],
+    [
+      "Non Cash changes",
+      "",
+      ""
+    ],
+    [
+      "- Additions or (modifications) to lease liabilities",
+      "-",
+      "(0.76)"
+    ],
+    [
+      "March 31, 2023",
+      "-",
+      "2.02"
+    ]
+  ],
+  "author": "self"
+}

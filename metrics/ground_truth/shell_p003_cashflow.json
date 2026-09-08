@@ -1,0 +1,225 @@
+{
+  "label_id": "shell_p003_cashflow",
+  "document": "Shell.pdf",
+  "page_no": 3,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "Live #REF! cells printed into the PDF (F5). They ship as #REF!,",
+    "never repaired. The unlabelled rows under adjustments and under",
+    "working-capital changes are subtotals the document prints without",
+    "a label; they are rows, not extra columns.",
+    "A second table (liabilities arising from financing activities)",
+    "sits below this one and is labelled separately."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": null,
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": "₹ Million"
+  },
+  "grid": [
+    [
+      "Particulars",
+      "2022-23",
+      "2021-22"
+    ],
+    [
+      "A. CASH FLOW FROM OPERATING ACTIVITIES",
+      "",
+      ""
+    ],
+    [
+      "Profit before tax as per Statement of Profit or Loss",
+      "1,009.26",
+      "240.12"
+    ],
+    [
+      "Adjustments for:",
+      "",
+      ""
+    ],
+    [
+      "Depreciation and amortisation expenses",
+      "11.14",
+      "14.86"
+    ],
+    [
+      "Loss/ (gain) on disposal of Property, plant and equipments (net)",
+      "(0.08)",
+      "(0.04)"
+    ],
+    [
+      "Loss/ (gain) on sale of current investments (net)",
+      "(82.29)",
+      "(11.97)"
+    ],
+    [
+      "Gain on fair valuation of Investment",
+      "(4.57)",
+      "(1.51)"
+    ],
+    [
+      "Interest and finance cost",
+      "0.41",
+      "2.62"
+    ],
+    [
+      "Interest income",
+      "(51.18)",
+      "(37.68)"
+    ],
+    [
+      "",
+      "(126.57)",
+      "(33.72)"
+    ],
+    [
+      "Operating Profit before Working Capital changes",
+      "882.69",
+      "206.40"
+    ],
+    [
+      "Adjustments for:",
+      "",
+      ""
+    ],
+    [
+      "Increase/(decrease) in trade and other payables",
+      "731.32",
+      "1,440.00"
+    ],
+    [
+      "Increase/(decrease) other current liabilities",
+      "81.86",
+      "(11.25)"
+    ],
+    [
+      "Increase/(decrease) Provisions",
+      "(3.54)",
+      "1.16"
+    ],
+    [
+      "(Increase)/decrease in other non-current assets",
+      "1.71",
+      "(1.54)"
+    ],
+    [
+      "(Increase)/decrease in inventories",
+      "130.11",
+      "(146.69)"
+    ],
+    [
+      "(Increase)/decrease in other current assets",
+      "(9.88)",
+      "8.86"
+    ],
+    [
+      "(Increase)/decrease in trade and other receivables",
+      "#REF!",
+      "(592.14)"
+    ],
+    [
+      "",
+      "#REF!",
+      "698.40"
+    ],
+    [
+      "Cash Generated from Operations",
+      "#REF!",
+      "904.80"
+    ],
+    [
+      "Direct taxes paid",
+      "(267.13)",
+      "(62.36)"
+    ],
+    [
+      "Net cash flow from / (used in) Operating Activities (A)",
+      "#REF!",
+      "842.44"
+    ],
+    [
+      "B. CASH FLOW FROM INVESTING ACTIVITIES",
+      "",
+      ""
+    ],
+    [
+      "Purchase of Property, plant and equipments",
+      "(8.43)",
+      "(0.70)"
+    ],
+    [
+      "Proceeds from disposal of Property, plant and equipments",
+      "0.08",
+      "10.99"
+    ],
+    [
+      "(Purchase)/ sale of current investments (net)",
+      "(100.51)",
+      "(288.47)"
+    ],
+    [
+      "Interest received",
+      "51.18",
+      "37.68"
+    ],
+    [
+      "Net cash flow from / (used in) Investing Activities (B)",
+      "(57.68)",
+      "(240.50)"
+    ],
+    [
+      "C. CASH FLOW FROM FINANCING ACTIVITIES",
+      "",
+      ""
+    ],
+    [
+      "Payment on lease Liability (Principal)",
+      "(2.93)",
+      "(2.62)"
+    ],
+    [
+      "Payment on lease Liability (Interest)",
+      "(0.25)",
+      "(0.52)"
+    ],
+    [
+      "Dividend paid",
+      "(435.00)",
+      "(90.00)"
+    ],
+    [
+      "Interest and finance charges paid",
+      "(0.16)",
+      "(2.10)"
+    ],
+    [
+      "Proceeds from / (repayment of) short-term borrowings (net)",
+      "-",
+      "(238.68)"
+    ],
+    [
+      "Net cash flow from / (used in) Financing Activities (C)",
+      "(438.34)",
+      "(333.92)"
+    ],
+    [
+      "Net Increase/ (decrease) in cash and cash equivalents (A+B+C)",
+      "#REF!",
+      "268.02"
+    ],
+    [
+      "Cash and cash equivalents at the beginning of the year",
+      "355.97",
+      "87.95"
+    ],
+    [
+      "Cash and cash equivalents at the end of the year",
+      "#REF!",
+      "355.97"
+    ]
+  ],
+  "author": "self"
+}

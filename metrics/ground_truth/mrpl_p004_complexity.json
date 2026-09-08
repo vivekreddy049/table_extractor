@@ -1,0 +1,34 @@
+{
+  "label_id": "mrpl_p004_complexity",
+  "document": "Shell MRPL Aviation Fuels and Services Limited.pdf",
+  "page_no": 4,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "A genuine two-column table on the same page as the rating history.",
+    "Labelled so it is not scored as a false positive against the",
+    "history table."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": "Complexity level of the rated instruments",
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": null
+  },
+  "grid": [
+    [
+      "Instrument",
+      "Complexity indicator"
+    ],
+    [
+      "Long term/Short term fund based/non-fund based",
+      "Simple"
+    ],
+    [
+      "Long term/Short term unallocated limits",
+      "NA"
+    ]
+  ],
+  "author": "self"
+}

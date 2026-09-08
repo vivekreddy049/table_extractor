@@ -1,0 +1,21 @@
+{
+  "label_id": "mrpl_p007_figure_page",
+  "document": "Shell MRPL Aviation Fuels and Services Limited.pdf",
+  "page_no": 7,
+  "is_table": false,
+  "expected_rejection_codes": [],
+  "expected_assets": [
+    {
+      "kind": "figure",
+      "notes": "India map with branch pins; xref 68 at a unique bbox. Repeating logos on pages 1-6 are furniture (F6), not assets."
+    }
+  ],
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "Contact / disclaimer page with a genuine figure (map of India) and",
+    "no data table. Branch telephone boxes must not be accepted as a",
+    "table. S8 must emit the map as an asset and must not treat the",
+    "repeating ICRA logos as figures."
+  ],
+  "author": "self"
+}

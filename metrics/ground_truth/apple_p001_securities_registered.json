@@ -1,0 +1,80 @@
+{
+  "label_id": "apple_p001_securities_registered",
+  "document": "Apple Form 10-K.pdf",
+  "page_no": 1,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "header_row_count": 1,
+  "notes": [
+    "Page 1 of a 10-K is a cover page, and it contains BOTH:",
+    "  (a) a form-style address block -- 'California / 94-2404110 / One Apple",
+    "      Park Way / Cupertino, California / 95014 / (408) 996-1010' -- laid",
+    "      out in two columns of labelled fields. This is NOT a data table.",
+    "  (b) a genuine 3-column table, 'Securities registered pursuant to",
+    "      Section 12(b) of the Act', labelled below.",
+    "The extractor currently merges (a) into (b) and emits one 14x4 grid. That",
+    "is an OVER-MERGE, not a pure false positive: refusing the whole page would",
+    "lose a real table, and accepting it as-is ships the cover block as data.",
+    "",
+    "This label exists because the alternative was to invent a rejection",
+    "threshold. Measured on the labelled set, neither candidate signal separates",
+    "this page from real tables: sparsest-column fill is 21% here but 27% on",
+    "Shell p3 and 0% on Apple p30, and column alignment is not all-MIXED. Any",
+    "cutoff between 21% and 27% would be fitted to three documents and would",
+    "fail on the held-out set. Labelling it makes the failure measurable so a",
+    "fix can be judged rather than guessed at."
+  ],
+  "grid": [
+    [
+      "Title of each class",
+      "Trading symbol(s)",
+      "Name of each exchange on which registered"
+    ],
+    [
+      "Common Stock, $0.00001 par value per share",
+      "AAPL",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "0.000% Notes due 2025",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "0.875% Notes due 2025",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "1.625% Notes due 2026",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "2.000% Notes due 2027",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "1.375% Notes due 2029",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "3.050% Notes due 2029",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "0.500% Notes due 2031",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ],
+    [
+      "3.600% Notes due 2042",
+      "—",
+      "The Nasdaq Stock Market LLC"
+    ]
+  ],
+  "author": "self"
+}

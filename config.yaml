@@ -1,0 +1,395 @@
+# zextract default configuration.
+#
+# RULE (ARCHITECTURE.md 9.1 / DECISIONS.md D20): no absolute measurement constants
+# live in the detection or structure code. Every threshold is either
+#   (a) a MULTIPLE of a page-derived statistic, named here, or
+#   (b) a dimensionless ratio / count, named here.
+#
+# The unit of every "*_factor" below is stated in its comment. A value expressed
+# in points, pixels or any other absolute unit is a bug.
+
+docstrum:
+  # Number of nearest neighbours examined per token. Docstrum (O'Gorman 1993)
+  # uses k=5; smaller loses the bimodality, larger blurs it.
+  k_neighbours: 5
+  # Half-width of the angular cone (degrees) used to classify a neighbour pair as
+  # "along the text direction" or "across it". 30 deg leaves a 30 deg dead zone
+  # between the two classes, which is what keeps diagonal pairs out of both.
+  angle_cone_deg: 30.0
+  # Histogram resolution for peak finding. Bin edges are derived from the data
+  # range, so this is a resolution choice, not a measurement.
+  n_bins: 64
+  # Distances above this quantile are excluded before binning (outlier guard).
+  range_quantile: 0.95
+  # Moving-average width (in bins) applied before argmax. Must be odd.
+  smoothing_bins: 3
+  # A page with fewer tokens than this cannot support a stable histogram; it
+  # falls back to document-level statistics and is marked LOW_CONFIDENCE_LAYOUT.
+  min_tokens: 24
+  # A histogram peak carrying less than this share of total mass (measured over
+  # the smoothing window, not one bin) is not a peak.
+  min_peak_mass: 0.06
+  # Vertical neighbour pairs must outnumber horizontal ones by this factor
+  # before the page is called vertically written. Biased towards horizontal
+  # because sparse table pages produce more vertical than horizontal neighbours
+  # while being perfectly upright -- see docstrum._angle_peak.
+  vertical_dominance: 1.5
+  # A neighbour pair only counts as "same line" if the boxes overlap vertically
+  # by at least this fraction of the shorter height, and as "same column" if
+  # they overlap horizontally by this fraction of the narrower width. The angle
+  # cone alone admits diagonal neighbours on adjacent lines. Dimensionless.
+  min_pair_overlap: 0.50
+  # Typographic sanity band on line_pitch / modal_font_size. Outside this, the
+  # histogram found something that is not line spacing (a block gap on a sparse
+  # page, typically) and the page is marked unstable rather than trusted.
+  min_pitch_size_ratio: 0.90
+  # Upper end of the same band.
+  max_pitch_size_ratio: 3.00
+  # An inter-word space is a fraction of the font size. Above this ratio the
+  # histogram has measured a column gutter, not a word gap -- see docstrum.
+  # Median across the sample corpus is 0.28; the one page that breached it
+  # measured 1.27 and collapsed a 4x7 table into 2x2.
+  max_word_gap_size_ratio: 0.80
+
+page_typing:
+  # Text-layer characters at or above which a page can be called digital.
+  digital_min_chars: 200
+  # Text-layer characters below which a page is raster regardless of images.
+  raster_max_chars: 20
+  # Image coverage (fraction of page area) at or above which a page with little
+  # text is raster.
+  raster_min_image_coverage: 0.75
+  # Image coverage at or above which a page with substantial text is hybrid.
+  hybrid_min_image_coverage: 0.30
+
+rules:
+  # A drawing primitive counts as a rule if its thin dimension is at most this
+  # multiple of the page's line_pitch. Scale-free: a hairline on a dense page and
+  # on a sparse page are both thin relative to their own line spacing.
+  max_thickness_pitch_factor: 0.25
+  # ...and its long dimension is at least this multiple of line_pitch.
+  min_length_pitch_factor: 1.5
+  # Collinear segments within this multiple of line_pitch are merged.
+  merge_tolerance_pitch_factor: 0.12
+  # Two rules closer than this (multiple of line_pitch) are treated as one.
+  dedupe_pitch_factor: 0.15
+  # A horizontal rule sitting this close to a link annotation's bottom edge --
+  # and contained within its x-span -- is a hyperlink underline, not a table
+  # rule. Measured on Apple p58: underlines sit within ~3pt of the link's
+  # bottom against a ~10.5pt pitch, so 0.35 covers them with margin.
+  link_underline_y_tol_pitch_factor: 0.35
+  # How far a rule may extend past the link's x-span and still count as its
+  # underline. Tight on purpose: containment is what stops a genuine table
+  # rule that merely passes near a link from being discarded.
+  link_underline_x_tol_pitch_factor: 0.35
+
+lines:
+  # A token joins an open line when its vertical overlap with that line is at
+  # least this fraction of the shorter of the two heights. Dimensionless.
+  min_vertical_overlap: 0.45
+  # A token whose vertical centre is further than this multiple of line_pitch
+  # from a line's centre can never join it, regardless of overlap. Guards
+  # against a tall token swallowing its neighbours.
+  max_centre_offset_pitch_factor: 0.60
+
+blocks:
+  # A borderless table sitting under its introducing sentence is separated by
+  # nothing a gap or a rule can see, so the paragraph swallows it and the table
+  # is never detected -- silently, which is the worst failure available. The
+  # split is taken where a PARAGRAPH line is followed by a line with column
+  # structure. "Paragraph line" means it holds no gutter-sized gap and spans at
+  # least this share of the page's text width: a run of prose reaches ~0.68 on
+  # Apple's debt note, while the section headers INSIDE a statement
+  # ("Net sales:", "Operating expenses:") reach only 0.06-0.13, and those must
+  # never split the table they head. Dimensionless.
+  prose_min_width_share: 0.50
+  # Consecutive text lines separated by more than this multiple of line_pitch
+  # start a new block.
+  split_pitch_factor: 1.60
+  # When horizontal rules are present, a rule splits a block if it sits at least
+  # this multiple of line_pitch away from the lines on either side.
+  rule_clearance_pitch_factor: 0.25
+
+render:
+  # Debug overlay rasterisation scale. Affects only debug PNGs, never extraction.
+  dpi: 144
+
+columns:
+  # Fraction of a block's lines that must leave an x-interval empty before it
+  # counts as a gutter. Not 1.0: one long spanning row ("Cost of sales:")
+  # covers a gutter every other row leaves clear, and unanimity would merge two
+  # columns because of that single row.
+  gutter_persistence: 0.80
+  # Minimum gutter width, as a multiple of the page's inter-word gap. A gutter
+  # is by definition wider than the space between two words in one cell.
+  min_gutter_unit_factor: 2.20
+  # Token boxes are padded by this multiple of the word gap before projection,
+  # so words inside one cell merge instead of showing a gutter between them.
+  token_pad_unit_factor: 0.60
+  # Projection bin width, as a multiple of the word gap. A resolution choice.
+  bin_unit_factor: 0.25
+  # Two blocks belong to one table if every column boundary agrees within this
+  # multiple of the word gap.
+  agreement_unit_factor: 2.50
+  # Two blocks can only join one table if the vertical gap between them is
+  # within this multiple of line pitch. Stops a table at the top of a page and
+  # an unrelated one at the bottom from merging because their columns happen to
+  # line up.
+  run_max_gap_pitch_factor: 3.00
+  # Share of tokens that must fall cleanly inside the JOINT partition before two
+  # blocks are merged into one table. Higher than min_support because a merge is
+  # harder to undo than a split.
+  merge_min_support: 0.98
+  # Fallbacks for the horizontal unit when a page has no measurable inter-word
+  # gap (a table whose every cell is a single word). Expressed against the two
+  # other page statistics so the unit stays page-derived either way.
+  unit_from_font_size: 0.30
+  # Last-resort fallback when even the font size is unavailable.
+  unit_from_line_pitch: 0.20
+  # A vertical rule only bounds a column if it crosses at least this share of
+  # the region's height; a short rule is a box edge or a bracket.
+  rule_block_overlap_min: 0.70
+  # One edge of a column's content counts as the steadier one if its spread is
+  # this many times smaller than the other's. Dimensionless.
+  alignment_ratio: 1.80
+  # Below this spread (in word-gaps) both edges count as equally steady, which
+  # happens when every cell in the column has the same width.
+  alignment_tolerance_unit_factor: 0.50
+  # Share of a block's lines that must leave the table's gutters clear before
+  # the block can join it. A table row keeps its content inside the columns; a
+  # sentence runs straight across them. Dimensionless.
+  gutter_respect_share: 0.70
+  # A single-column block only joins a table as a section row if it starts
+  # within this many word-gaps of the label column's content edge. Section
+  # labels are left-aligned with the row labels; a centred note is not.
+  spanning_max_indent_unit_factor: 8.0
+  # Below this share of tokens falling cleanly inside the inferred columns, the
+  # partition is a poor description of the block and the table is flagged.
+  min_support: 0.95
+  # A column is a symbol column if its width is at most this share of the table
+  # width and at least `symbol_min_purity` of its non-empty cells are single
+  # currency or marker glyphs. Both dimensionless.
+  symbol_max_width_share: 0.045
+  # Share of a candidate symbol column's non-empty cells that must be a single
+  # currency or marker glyph.
+  symbol_min_purity: 0.80
+
+rows:
+  # The ONE lexical dependency in the pipeline, kept here rather than buried in
+  # code so it is visible, reviewable and swappable for another corpus or
+  # language. Everything else about a row's kind is structural (does it carry a
+  # label, does it carry figures) and so domain-neutral.
+  #
+  # Two tiers, because the risk is not symmetric. `total_words_strong` are terms
+  # that mean "this row closes a scope" in essentially any table. `total_words_weak`
+  # mean it in a financial statement and something else entirely elsewhere --
+  # "Net weight", "Gross mass" on a specification sheet are line items, not
+  # totals -- so they are honoured ONLY in a table that also contains a strong
+  # term. A table with no strong term is not assumed to be a financial one.
+  total_words_strong: ["total", "subtotal", "sub-total", "grand total", "aggregate"]
+  # Honoured only in a table that also contains a strong term (see above).
+  total_words_weak: ["net ", "gross ", "profit ", "loss ", "balance at", "closing balance", "ending balance"]
+  # A line can only be a wrapped continuation of the row above if the vertical
+  # gap is within this multiple of line pitch.
+  wrap_max_gap_pitch_factor: 1.40
+  # ...and only if no ruling line separates the two. A horizontal rule drawn
+  # between two lines is the producer stating a row boundary, which outranks
+  # every inferred signal. The rule must cross at least this share of the
+  # table's width to count: a full-width row separator does, an underline or a
+  # bracket under one cell does not. Dimensionless, so no page scale is implied.
+  row_rule_min_width_share: 0.60
+  # ...and if it is indented past the row above by at least this many word-gaps.
+  # A hanging indent is the one decisive wrap signal; without it the line stays
+  # its own row and is flagged rather than merged.
+  wrap_min_indent_unit_factor: 0.50
+  # Two label left-edges are the same indent level unless they differ by more
+  # than this many word-gaps. Indentation is often the only signal marking a
+  # child line item, so the step has to be small -- but not smaller than the
+  # jitter between two nominally-aligned labels.
+  indent_step_unit_factor: 1.50
+  # Cap on nesting depth. Financial statements rarely exceed four.
+  max_indent_levels: 4
+  # A line is "centred" -- a page note rather than a table row -- if it leaves a
+  # margin of at least this many word-gaps on BOTH sides of the table extent...
+  centred_min_margin_unit_factor: 4.00
+  # ...and those two margins differ by no more than this share of the larger.
+  centred_symmetry_ratio: 0.25
+  # ...and if it is indented past the row above by at least this many word-gaps.
+  # A hanging indent is the one decisive wrap signal; without it the line stays
+  # its own row and is flagged rather than merged.
+  wrap_min_indent_unit_factor: 0.50
+  # Two label left-edges are the same indent level unless they differ by more
+  # than this many word-gaps. Indentation is often the only signal marking a
+  # child line item, so the step has to be small -- but not smaller than the
+  # jitter between two nominally-aligned labels.
+  indent_step_unit_factor: 1.50
+  # Cap on nesting depth. Financial statements rarely exceed four.
+  max_indent_levels: 4
+  # A line is "centred" -- a page note rather than a table row -- if it leaves a
+  # margin of at least this many word-gaps on BOTH sides of the table extent...
+  centred_min_margin_unit_factor: 4.00
+  # ...and those two margins differ by no more than this share of the larger.
+  centred_symmetry_ratio: 0.25
+
+traps:
+  # Share of a candidate's rows that must satisfy a trap rule before it fires.
+  row_share: 0.60
+  # Two-column prose: mean words per filled cell above this, with numeric share
+  # below the next threshold, is running text rather than data.
+  prose_mean_words: 8.0
+  # ...and numeric cells below this share of the filled cells.
+  prose_max_numeric_share: 0.05
+  # A two-column block of at most this many rows whose labels all end in ":" is
+  # a key-value block, not a table.
+  keyvalue_max_rows: 3
+  # Fewer rows than this is not a table worth emitting.
+  min_rows: 2
+  # Guilt by adjacency: an accepted candidate at or below this many rows is
+  # checked against its immediate neighbours for a rejected list-like fragment
+  # sharing its exact column structure. Real data tables are grown into one
+  # clean run by S3 and never produce this signature; this only catches the
+  # surviving splinters of a list/index that got shredded by inconsistent
+  # per-row column occupancy (ARCHITECTURE.md, Apple p31/p58).
+  fragment_max_rows: 3
+  # Two candidates count as adjacent for this check if the vertical gap
+  # between them is within this multiple of the page's horizontal unit
+  # (word-gap or, failing that, font size -- see s3_detect.columns.horizontal_unit).
+  # Measured: the real gaps between the shredded exhibit-list fragments on
+  # Apple p58 are ~9.85pt against a 2.25pt unit, so 3.0 was too tight to fire
+  # at all. 5.0 (~11.3pt) covers the observed value with margin while staying
+  # far below the spacing that separates genuinely unrelated page content.
+  fragment_adjacency_gap_unit_factor: 5.0
+  # The table's outer extent (left edge of the first column, right edge of the
+  # last) must agree within this multiple of the same unit. Measured diffs on
+  # the real cases run 0-4.5pt; 4.0 (~9pt) covers them with margin.
+  fragment_column_tol_unit_factor: 4.0
+
+furniture:
+  # How many lines from the top and from the bottom of each page are considered
+  # as running-header/footer candidates. Ordinal position, not a margin band:
+  # Apple's running footer is always the last line but floats between y=523 and
+  # y=671 on a 792pt page, so no geometric band finds it.
+  edge_line_depth: 3
+  # A line signature recurring in the same position on at least this share of
+  # pages is furniture.
+  min_page_share: 0.40
+  # Below this page count a frequency argument is meaningless, so no line is
+  # called furniture and the pages say so.
+  min_pages: 3
+
+normalise:
+  # Share of a column's non-blank cells that must agree on a type before the
+  # column is called that type. The minority is never coerced -- one string in a
+  # numeric column is a signal for S9, not something to rewrite.
+  min_type_agreement: 0.70
+
+confidence:
+  # NOTE: these weights are STATED, not fitted. The output of S9 is a ranking,
+  # not a calibrated probability; calibration needs a labelled set that does not
+  # exist yet. See LIMITATIONS.md.
+  #
+  # Starting score for a cell with no adverse signal.
+  base: 0.95
+  # Confidence never reports absolute certainty of failure.
+  floor: 0.05
+  # A cell whose type does not match its column's inferred type.
+  penalty_type_nonconformity: 0.45
+  # A live spreadsheet error literal printed into the document.
+  penalty_source_error: 0.60
+  # Comma grouping matching neither Indian nor Western convention.
+  penalty_parse_ambiguous: 0.35
+  # A currency glyph the font encoded wrongly.
+  penalty_unit_ambiguous: 0.15
+  # A cell inside a run whose stated total does not reconcile.
+  penalty_crossfoot_fail: 0.40
+  # The table or the row carries a structural flag.
+  penalty_table_flag: 0.10
+  # The page could not calibrate its own line pitch.
+  penalty_low_confidence_layout: 0.15
+  # A year fragment sitting under a month-and-comma (or any cell that is a
+  # 4-digit year under a cell ending in a comma) is a split header. This is
+  # a structural failure the other signals cannot see: the fragment looks
+  # like a clean integer and would otherwise ship at the base score.
+  penalty_header_split: 0.50
+  # A cell inside a run whose total DOES reconcile: arithmetic agreement is
+  # evidence about every number that produced it, not only the total.
+  bonus_crossfoot_pass: 0.04
+  # Absolute tolerance when comparing a stated total to the sum of its parts.
+  crossfoot_tolerance: 0.02
+  # Cells below this confidence go to review_queue.csv.
+  review_threshold: 0.90
+  # When true, S9 applies the frozen logistic+isotonic model in
+  # src/zextract/calib/model_v1.json. --no-calibration flips this off.
+  apply_calibration: true
+
+excel:
+  # Native Excel numbers and dates are written only above this confidence;
+  # below it the raw string is written and the cell is tinted, so uncertainty
+  # is visible in the file itself.
+  native_type_min_confidence: 0.90
+
+context:
+  # How far above a table (in line pitches) a title line may sit. Larger than
+  # columns.run_max_gap_pitch_factor so a heading S3 left outside the table is
+  # still close enough for S8 to bind.
+  title_max_pitch_factor: 4.00
+  # How far below a table a caption line may sit. Same reason as title.
+  caption_max_pitch_factor: 4.00
+  # A unit/scale declaration this close to the table (or inside it) binds
+  # locally rather than being inherited from further up the document.
+  unit_local_pitch_factor: 2.00
+  # A heading is larger than the page's modal body size by at least this factor.
+  heading_size_factor: 1.05
+  # Word-count cap on a title or bold-short heading. Dimensionless.
+  max_title_words: 16
+  # Word-count cap on a caption line.
+  max_caption_words: 20
+  # How many heading lines to keep in section_path, nearest first.
+  max_section_depth: 4
+
+assets:
+  # An image xref recurring on at least this share of pages is page furniture
+  # (logos), not a figure (ARCHITECTURE.md F6).
+  min_page_share: 0.40
+  # Below this page count a frequency argument is meaningless.
+  min_pages: 3
+  # Same-xref boxes this similar (IoU) count as the same logo placement.
+  furniture_iou: 0.95
+  # Images smaller than this share of page area are icons, not figures.
+  min_area_share: 0.02
+  # Vertical gap (line pitches) for the adjacency term in table→figure scoring.
+  adjacency_pitch_factor: 2.00
+  # Rasterisation scale for cropped figure PNGs. Affects only assets/, never cells.
+  crop_dpi: 144
+
+spans:
+  # A cell spans into a neighbour column/row if its box overlaps that band by
+  # at least this share of the neighbour's width or height. Dimensionless.
+  min_overlap_share: 0.35
+  # Maximum number of leading rows considered as a header stack.
+  max_header_rows: 4
+  # A row is a header if this share or fewer of its filled cells look numeric.
+  header_max_numeric_share: 0.25
+  # Adjacent header fragments closer than this many word-gaps are one spanning
+  # title, not two column labels.
+  header_merge_gap_unit_factor: 3.00
+
+stitch:
+  # Column right-edges match if each x1/page_width differs by at most this.
+  max_edge_share: 0.015
+  # A continuation must start within this many line pitches of the page top.
+  top_margin_pitch_factor: 1.50
+  # Jaccard similarity at or above which a leading row is a repeated header.
+  header_similarity: 0.90
+
+footnotes:
+  # Search this many pages after the cell's page for a matching footnote block.
+  search_pages_ahead: 2
+
+ocr:
+  # Raster/hybrid pages with fewer text-layer tokens than this try Tesseract.
+  min_text_tokens: 24
+  # Rasterisation DPI for page OCR. Affects only the OCR path, never digital cells.
+  dpi: 300
+
+

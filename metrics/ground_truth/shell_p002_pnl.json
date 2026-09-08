@@ -1,0 +1,176 @@
+{
+  "label_id": "shell_p002_pnl",
+  "document": "Shell.pdf",
+  "page_no": 2,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "Header-after-body (F4): the Note/Particulars/year row is written",
+    "last in the stream. Roman numerals are folded into Particulars.",
+    "Deferred Tax is followed by an unlabelled tax subtotal (257.05 /",
+    "60.90) which is a real row of the document, not a second column.",
+    "The extractor currently emits 7 columns by treating inner/outer",
+    "subtotal bands as columns; the logical table is 4.",
+    "LABEL CORRECTION: cells originally transcribed the rupee sign the PAGE DISPLAYS. The text layer holds a BACKTICK -- this font encodes the rupee sign outside its declared encoding (ARCHITECTURE.md F9). The brief scores exact match on raw_text, and raw_text is the backtick, so the label was penalising the extractor for being correct about the bytes. Caught by metrics/verify_labels.py, not by re-reading."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": null,
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": "₹ Million"
+  },
+  "grid": [
+    [
+      "Particulars",
+      "Note",
+      "2022-23",
+      "2021-22"
+    ],
+    [
+      "I Revenue from Operations",
+      "25",
+      "16,195.63",
+      "6,680.45"
+    ],
+    [
+      "II Other Income",
+      "26",
+      "138.32",
+      "51.45"
+    ],
+    [
+      "III Total Income (I+II)",
+      "",
+      "16,333.95",
+      "6,731.90"
+    ],
+    [
+      "IV Expenses",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Purchase of Stock in Trade",
+      "27",
+      "14,732.21",
+      "6,317.91"
+    ],
+    [
+      "Changes in Inventory of Stock-in-trade",
+      "28",
+      "130.11",
+      "(146.69)"
+    ],
+    [
+      "Employee Benefits Expense",
+      "29",
+      "57.41",
+      "58.25"
+    ],
+    [
+      "Finance Costs",
+      "30",
+      "0.41",
+      "2.62"
+    ],
+    [
+      "Depreciation and Amortisation Expenses",
+      "31",
+      "11.14",
+      "14.86"
+    ],
+    [
+      "Other Expenses",
+      "32",
+      "393.41",
+      "244.83"
+    ],
+    [
+      "Total Expenses",
+      "",
+      "15,324.69",
+      "6,491.78"
+    ],
+    [
+      "V Profit before Tax (III-IV)",
+      "",
+      "1,009.26",
+      "240.12"
+    ],
+    [
+      "VI Tax expense",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Current Tax",
+      "33",
+      "256.10",
+      "66.30"
+    ],
+    [
+      "Deferred Tax",
+      "17",
+      "0.95",
+      "(5.40)"
+    ],
+    [
+      "",
+      "",
+      "257.05",
+      "60.90"
+    ],
+    [
+      "VII Profit for the year (V-VI)",
+      "",
+      "752.21",
+      "179.22"
+    ],
+    [
+      "VIII Other Comprehensive Income",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Items that will not be reclassified to profit or loss",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Remeasurements gain / (loss) on defined benefit plan",
+      "",
+      "(4.27)",
+      "1.15"
+    ],
+    [
+      "Income tax relating to items that will not be reclassified to profit or loss",
+      "",
+      "1.08",
+      "(0.29)"
+    ],
+    [
+      "Total Other Comprehensive income/(loss), net of tax",
+      "",
+      "(3.19)",
+      "0.86"
+    ],
+    [
+      "IX. Total Comprehensive Income for the year (VII+VIII)",
+      "",
+      "749.02",
+      "180.08"
+    ],
+    [
+      "Earnings per share (Basic and Diluted) (`)",
+      "34",
+      "25.07",
+      "5.97"
+    ]
+  ],
+  "author": "self"
+}

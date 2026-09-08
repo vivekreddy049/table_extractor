@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.venv/
+out/
+.pytest_cache/
+*.egg-info/
+notes/gt_pages/
+
+# Run artefacts: every `zextract run` writes a timestamped directory here
+# (DB, per-table xlsx, page crops, viewer). Reproducible from the CLI, and
+# 277MB of it, so it is not carried in the repository.
+runs/
+
+# Server and scratch output from local debugging.
+*.log
+_*.png
+_*.json
+_*.pdf
+_rev/
+notes/probe_*.txt
+
+# Ad-hoc OCR experiment, not part of the pipeline.
+build_replacements.py

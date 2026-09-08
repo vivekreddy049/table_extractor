@@ -1,0 +1,55 @@
+{
+  "label_id": "mrpl_p005_annexure",
+  "document": "Shell MRPL Aviation Fuels and Services Limited.pdf",
+  "page_no": 5,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "header_row_count": 1,
+  "stitch": {
+    "is_continuation": false,
+    "not_same_table_as": "mrpl_p004_rating_history"
+  },
+  "context": {
+    "title": "Annexure I: Instrument details",
+    "caption": "Source: Company",
+    "section_path": null,
+    "unit_scale_note": "Rs. crore"
+  },
+  "notes": [
+    "Annexure I. Seven columns, with heavily wrapped cells in columns 1 and 6.",
+    "This page is one the extractor calibrates poorly (78 tokens, pitch rejected",
+    "by the typographic sanity band, statistics inherited from the document), so",
+    "it is deliberately in the labelled set as a hard case rather than a",
+    "flattering one."
+  ],
+  "grid": [
+    [
+      "ISIN",
+      "Instrument name",
+      "Date of issuance",
+      "Coupon rate",
+      "Maturity",
+      "Amount rated (Rs. crore)",
+      "Current rating and outlook"
+    ],
+    [
+      "NA",
+      "Fund based/Non-fund based - Others",
+      "NA",
+      "NA",
+      "NA",
+      "143.00",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+"
+    ],
+    [
+      "NA",
+      "Unallocated limits",
+      "NA",
+      "NA",
+      "NA",
+      "22.00",
+      "[ICRA]AA- (Stable)/ [ICRA]A1+"
+    ]
+  ],
+  "author": "self"
+}

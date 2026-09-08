@@ -1,0 +1,307 @@
+{
+  "label_id": "shell_p001_balance_sheet",
+  "document": "Shell.pdf",
+  "page_no": 1,
+  "is_table": true,
+  "authored_from": "page text layer plus the rendered page, read by hand",
+  "notes": [
+    "Excel Print-to-PDF. The header row is emitted LAST in the content",
+    "stream (F4); structure is from coordinates. Enumerator tokens (a),",
+    "(b), (i) are folded into the Particulars cell, not a data column.",
+    "The two wrapped trade-payable descriptions are each one cell.",
+    "'-' is nil-this-period (type dash), not zero and not empty.",
+    "The unit glyph is encoded as a backtick; the document displays ₹."
+  ],
+  "header_row_count": 1,
+  "context": {
+    "title": null,
+    "caption": null,
+    "section_path": null,
+    "unit_scale_note": "₹ Million"
+  },
+  "grid": [
+    [
+      "Particulars",
+      "Note",
+      "March 31, 2023",
+      "March 31, 2022"
+    ],
+    [
+      "I. ASSETS",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Non – Current Assets",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Property, Plant and Equipment",
+      "2",
+      "30.05",
+      "25.31"
+    ],
+    [
+      "(b) Capital work-in-progress",
+      "2",
+      "0.21",
+      "-"
+    ],
+    [
+      "(c) Intangible assets",
+      "3",
+      "9.17",
+      "14.48"
+    ],
+    [
+      "(d) Right to Use Assets",
+      "4",
+      "1.28",
+      "4.65"
+    ],
+    [
+      "(e) Financial Assets",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(i) Other financial Assets",
+      "5",
+      "-",
+      "1.85"
+    ],
+    [
+      "(f) Deferred Tax Assets (net)",
+      "17",
+      "4.17",
+      "5.12"
+    ],
+    [
+      "(g) Income Tax Assets(net)",
+      "5(a)",
+      "27.95",
+      "28.83"
+    ],
+    [
+      "(h) Other Non-Current Assets",
+      "5(b)",
+      "0.26",
+      "1.97"
+    ],
+    [
+      "Total Non- Current Assets",
+      "",
+      "73.09",
+      "82.21"
+    ],
+    [
+      "Current Assets",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Inventories",
+      "6",
+      "106.45",
+      "236.56"
+    ],
+    [
+      "(b) Financial Assets",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(i) Investments",
+      "7",
+      "1,085.71",
+      "898.34"
+    ],
+    [
+      "(ii) Trade Receivables",
+      "8",
+      "1,858.56",
+      "1,732.59"
+    ],
+    [
+      "(iii) Cash and Cash Equivalents",
+      "9",
+      "1,267.03",
+      "355.97"
+    ],
+    [
+      "(iv) Bank Balances other than (iii) above",
+      "10",
+      "51.75",
+      "49.51"
+    ],
+    [
+      "(v) Other Financial Assets",
+      "11",
+      "18.65",
+      "4.95"
+    ],
+    [
+      "(c) Current Tax Assets (net)",
+      "12",
+      "9.75",
+      "-"
+    ],
+    [
+      "(d) Other Current Assets",
+      "13",
+      "6.13",
+      "6.00"
+    ],
+    [
+      "Total Current Assets",
+      "",
+      "4,404.03",
+      "3,283.92"
+    ],
+    [
+      "Total Assets",
+      "",
+      "4,477.12",
+      "3,366.13"
+    ],
+    [
+      "II. EQUITY AND LIABILITIES",
+      "",
+      "",
+      ""
+    ],
+    [
+      "EQUITY",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Equity Share Capital",
+      "14",
+      "300.00",
+      "300.00"
+    ],
+    [
+      "(b) Other Equity",
+      "15",
+      "610.70",
+      "296.68"
+    ],
+    [
+      "Total Equity",
+      "",
+      "910.70",
+      "596.68"
+    ],
+    [
+      "LIABILITIES",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Non – Current Liabilities",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Financial Liabilities",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(i) Lease Liabilities",
+      "16",
+      "-",
+      "2.50"
+    ],
+    [
+      "Total Non- Current Liabilities",
+      "",
+      "-",
+      "2.50"
+    ],
+    [
+      "Current Liabilities",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(a) Financial Liabilities",
+      "",
+      "",
+      ""
+    ],
+    [
+      "(i) Lease Liabilities",
+      "18",
+      "2.02",
+      "3.47"
+    ],
+    [
+      "(ii) Trade Payables",
+      "19",
+      "",
+      ""
+    ],
+    [
+      "- Total outstanding dues of micro enterprises and small enterprises",
+      "",
+      "16.97",
+      "8.40"
+    ],
+    [
+      "- Total outstanding dues of creditors other than micro enterprises and small enterprises",
+      "",
+      "3,307.73",
+      "2,593.38"
+    ],
+    [
+      "(iii) Other Financial Liabilities",
+      "20",
+      "49.24",
+      "40.84"
+    ],
+    [
+      "(b) Other Current Liabilities",
+      "21",
+      "189.27",
+      "107.41"
+    ],
+    [
+      "(c) Provisions",
+      "22",
+      "1.19",
+      "0.46"
+    ],
+    [
+      "(d) Current Tax Liabilities (net)",
+      "23",
+      "-",
+      "12.99"
+    ],
+    [
+      "Total Current Liabilities",
+      "",
+      "3,566.42",
+      "2,766.95"
+    ],
+    [
+      "Total Equity and Liabilities",
+      "",
+      "4,477.12",
+      "3,366.13"
+    ]
+  ],
+  "author": "self"
+}
